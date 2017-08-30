@@ -1,0 +1,47 @@
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <h2 class="footer-heading">{{ site.title | escape }}</h2>
+        <ul class="contact-list">
+          <li>
+            {% if site.author %}
+              {{ site.author | escape }}
+            {% else %}
+              {{ site.title | escape }}
+            {% endif %}
+            </li>
+            {% if site.email %}
+            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            {% endif %}
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <h3>{{ site.footer.opening[page.lang] }}</h3>
+        {{ site.footer.opening.days[page.lang] }}
+        <h3>{{ site.footer.covercharge[page.lang] }}</h3>
+        {{ site.footer.covercharge.text[page.lang] }}
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <h3>{{ site.footer.language[page.lang] }}</h3>
+        <!-- {{ page.url }} -->
+      </div>
+
+      <div class="footer-col footer-col-4">
+        <h3>{{ site.footer.billing.title[page.lang] }}</h3>
+        <p>{{ site.description[page.lang] | escape }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+{% for js in page.jsglobal %}
+  <script type="text/javascript">
+     {% include {{ js }} %}
+  </script>
+{% endfor %}

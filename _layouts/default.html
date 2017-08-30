@@ -1,0 +1,17 @@
+---
+#jscookie:
+#- scripts/set-cookie.js
+jsresize:
+- scripts/resize-to-screen.js
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'da' }}">
+
+  {% include head.html %}
+  <body>
+    {% include left-column.html %}
+    {% include bottom-row.html %}
+    {% include inner-screen.html %}
+  </body>
+
+</html>

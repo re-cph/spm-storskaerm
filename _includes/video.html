@@ -1,0 +1,51 @@
+<section class="header-video center">
+
+  <div class="middle">
+    <style>
+      .embed-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        height: auto;
+      }
+      .embed-container iframe,
+      .embed-container object,
+      .embed-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <div class='embed-container'>
+      <iframe
+        id="vimeo_player"
+        src="https://player.vimeo.com/video/70252506?autoplay=1&loop=1&title=0&byline=0&portrait=0&background=1" width="1920" height="1080"
+        frameborder="0"
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen
+      >
+      </iframe>
+      <script src="//player.vimeo.com/api/player.js"></script>
+      <script>
+        var iframe = document.querySelector('iframe');
+        var player = new Vimeo.Player(iframe);
+        var resizeVideo = function() {
+          var videoHeight = $('section.header-video').height();
+          var container = $('div.embed-container');
+          var playerIframe = $('#vimeo_player');
+          var top = (playerIframe.height() - videoHeight) / 2;
+          if (top < 0) { top = 0; }
+          container.css('marginTop', -top);
+        }
+        player.setVolume(0);
+        player.on('play', function() { resizeVideo(); });
+        player.pause();
+      </script>
+    </div>
+  </div>
+</section>

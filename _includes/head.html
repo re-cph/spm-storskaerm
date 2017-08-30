@@ -1,0 +1,49 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description[page.lang] | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  {% if jekyll.environment == 'production' and site.google_analytics %}
+  {% include google-analytics.html %}
+  {% endif %}
+  <!-- Custom headers -->
+  <!-- jQuery -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      var resizer = function() {
+        var width   = $(window).width();
+        var height  = $(window).height();
+        if (width < 1080 || height < 1920) {
+          var aspect = 1080/1920;
+          if (height/width > aspect) {
+            // too high ... zoom to width
+            $('body').css('zoom',width/1920);
+          } else {
+            // too wide ... set to height
+            $('body').css('zoom',height/1080);
+          }
+        }
+      }
+      setTimeout(resizer,300);
+      $(window).bind('resize',resizer);
+    })();
+  </script>
+  <script>
+    (function() {
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+    })();
+  </script>
+  <!-- End of custom headers -->
+</head>
