@@ -9,4 +9,6 @@ lang: da
 #- scripts/language.js
 #jscards:
 #- scripts/card-sizes.js
+jsfeed:
+- scripts/feed.js
 ---
