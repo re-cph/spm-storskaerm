@@ -24,22 +24,23 @@ body {
   .hexagon {
     text-align: center;
     position: absolute;
-    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="174" height="200" viewbox="0 0 173.20508075688772 200"><path fill="#14153e" opacity="0.9" d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"></path></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="340" height="392" viewbox="0 0 340 392"><path fill="#14153e" opacity="0.9" d="M170 0L340 98L340 294L170 392L0 294L0 98Z"></path></svg>');
     background-size: contain;
     background-repeat: no-repeat;
+    box-sizing: border-box;
     width: 340px;
-    height: 400px;
+    height: 392px;
     padding: 90px 0;
     &.employees {
       top: -15px;
-      right: 511px;
+      right: 513px;
     }
     &.dk-games {
       top: -15px;
-      right: 170px;
+      right: 171px;
     }
     &.casinos {
-      top: 280px;
+      top: 281px;
       right: 0px;
     }
   }
