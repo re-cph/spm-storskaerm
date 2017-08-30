@@ -1,4 +1,5 @@
 body {
+  background-color: gray;
   position: relative;
   width: 1920px;
   height: 1080px;
@@ -18,8 +19,10 @@ body {
   right: 0;
   width: 1480px;
   height: 930px;
-  
+
   .hexagon {
+    color: white;
+    text-align: center;
     position: absolute;
     background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="174" height="200" viewbox="0 0 173.20508075688772 200"><path fill="#14153e" opacity="0.9" d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"></path></svg>');
     background-size: contain;
@@ -28,11 +31,11 @@ body {
     height: 400px;
     &.employees {
       top: -15px;
-      right: 515px;
+      right: 511px;
     }
     &.dk-games {
       top: -15px;
-      right: 172px;
+      right: 170px;
     }
     &.casinos {
       top: 280px;

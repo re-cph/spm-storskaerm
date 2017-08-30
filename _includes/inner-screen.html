@@ -1,5 +1,31 @@
 <section class="inner-screen">
-  <div class="hexagon employees">&nbsp;</div>
-  <div class="hexagon dk-games">&nbsp;</div>
-  <div class="hexagon casinos">&nbsp;</div>
+  <div class="hexagon employees">
+    <div class="card">
+      <div class="number">79</div>
+      <h2>Ansatte</h2>
+      <div class="man-woman"></div>
+      <div class="woman">43 Kvinder</div>
+      <div class="man">36 Mænd</div>
+    </div>
+    <div class="card">
+      <h2>Spillemyndigheden</h2>
+      <div class="text">Spillemyndigheden sikrer et fair spilmarked i Danmark til gavn for spillerne.</div>
+    </div>
+  </div>
+
+  <div class="hexagon dk-games">
+    {% for hexa2 in site.data.hexagon2 %}
+    <div class="card" data-percent="{{ hexa2.percent}}">
+      {{ hexa2.percent}}% {{ hexa2.text }}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="hexagon casinos">
+    {% for hexa3 in site.data.hexagon3 %}
+    <div class="card">
+      {{ hexa3.text }}
+    </div>
+    {% endfor %}
+  </div>
 </section>
