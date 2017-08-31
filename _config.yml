@@ -28,6 +28,25 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 markdown: kramdown
 #theme: minima
 
+# plugins:
+#   - jekyll-assets
+
+# assets:
+#   compress:
+#     css: true
+#     js: true
+#   cache: .asset-cache
+#   cdn: https://cdn.example.com
+#   skip_baseurl_with_cdn: false
+#   skip_prefix_with_cdn: false
+#   prefix: "/assets"
+#   assets:
+#     - "*.png"
+#     - "bundle.css"
+#   digest: true
+#   sources:
+#     - "_assets/folder"
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

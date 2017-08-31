@@ -5,10 +5,4 @@
 layout: home
 lang: da
 #enda: en
-#jsglobal:
-#- scripts/language.js
-#jscards:
-#- scripts/card-sizes.js
-jsfeed:
-- scripts/feed.js
 ---
