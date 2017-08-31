@@ -5,7 +5,7 @@ body {
   width: 1920px;
   height: 1080px;
 }
-.mockup {
+.mockupx {
   background: url('images/mockup.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -65,18 +65,75 @@ body {
 }
 
 .hexagon {
+  &.employees {
+    .card {
+      margin-top: -13px;
+    }
+  }
+  &.dk-games {
+    .card {
+      .percent {
+        position: absolute;
+        margin: 0 auto;
+        font-size: 28px;
+        width: 100%;
+        top: 123px;
+      }
+      .text {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 100;
+        margin-top: 69px;
+      }
+      h2 {
+        position: absolute;
+        margin: 0 auto;
+        width: 200px;
+        padding: 0 69px;
+        bottom: 54px;
+        line-height: 1em;
+      }
+    }
+  }
+  &.casinos {
+    .card {
+      .text {
+        font-size: 25px;
+        font-weight: 100;
+        padding: 0 70px;
+        line-height: 1.3em;
+        margin-top: 15px;
+      }
+    }
+  }
   .card {
     .number {
       font-weight: 700;
-      font-size: 60px;
+      font-size: 50px;
       line-height: 0.8em;
     }
     h2 {
       text-transform: uppercase;
-      font-size: 30px;
+      font-size: 28px;
       padding: 0;
       margin: 0;
     }
+    .man-woman {
+      margin: 0 auto;
+      margin-top: 12px;
+      width: 62px;
+      height: 49px;
+      background-image: url('images/man-woman.svg');
+      background-size: cover;
+    }
+    .building {
+      margin: -9px auto 14px;
+      width: 49px;
+      height: 50px;
+      background-image: url('images/building.svg');
+      background-size: cover;
+    }
+
   }
 }
 
@@ -97,7 +154,7 @@ body {
     height: 108px;
     padding-left: 100px;
     padding-right: 40px;
-    padding-top: 20px;
+    padding-top: 22px;
     padding-bottom: 14px;
     line-height: 1.35em;
     font-size: 28px;
@@ -108,7 +165,7 @@ body {
     float: left;
     margin-left: 40px;
     .news-item {
-      margin-top: 26px;
+      margin-top: 33px;
     }
     .pub-date {
       float: left;
@@ -116,7 +173,7 @@ body {
     }
     .pub-date, h3 {
       font-weight: 100;
-      font-size: 40px;
+      font-size: 35px;
       margin-bottom: 0;
     }
     p {
