@@ -5,7 +5,13 @@ body {
   width: 1920px;
   height: 1080px;
 }
+.mockup {
+  background: url('images/mockup.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .left-column {
+  background-image: url('images/storskaerm-left.png');
   position: absolute;
   left: 0;
   background-color: rgba(20,21,62,0.9);
