@@ -16,7 +16,9 @@
   <div class="hexagon dk-games">
     {% for hexa2 in site.data.hexagon2 %}
     <div class="card" data-percent="{{ hexa2.percent}}">
-      {{ hexa2.percent}}% {{ hexa2.text }}
+      <div class="percent">{{ hexa2.percent}}%</div>
+      <div class="text">{{ hexa2.text }}</div>
+      <h2>Danskernes spil</h2>
     </div>
     {% endfor %}
   </div>
@@ -24,7 +26,9 @@
   <div class="hexagon casinos">
     {% for hexa3 in site.data.hexagon3 %}
     <div class="card">
-      {{ hexa3.text }}
+      <div class="svg-dummy"></div>
+      <h2>Virksomheder</h2>
+      <div class="text">{{ hexa3.text }}</div>
     </div>
     {% endfor %}
   </div>
