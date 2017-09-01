@@ -182,6 +182,25 @@
 
       },15000);
     })();
+
+    // Animate newsfeed
+    (function() {
+      setTimeout(function() {
+        var newsItem = $('#news div.news-item');
+        $(newsItem[0]).addClass('active');
+        setInterval(function() {
+          $('#news div.news-item.active')
+            .removeClass('active')
+              .next()
+              .addClass('active');
+
+          if(!$('#news .news-item.active').length > 0) {
+            $(newsItem[0]).addClass('active');
+          }
+        }, 5000);
+      }, 3000);
+
+    })();
   </script>
   <!-- End of custom headers -->
 </head>
