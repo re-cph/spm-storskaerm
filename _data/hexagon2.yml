@@ -15,10 +15,10 @@
   text: klasselotteri
 - hexa2:
   percent: 4
-  text: landbaseret kasino
+  text: landbaseret<br />kasino
 - hexa2:
   percent: 3
-  text: almennyttige lotteri
+  text: almennyttige<br />lotteri
 - hexa2:
   percent: 1
   text: hestevæddeløb

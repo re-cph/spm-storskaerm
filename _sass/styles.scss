@@ -5,7 +5,7 @@ body {
   width: 1920px;
   height: 1080px;
 }
-.mockupx {
+.mockup {
   background: url('images/mockup.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -69,6 +69,13 @@ body {
     .card {
       margin-top: -13px;
     }
+    .card.second {
+      margin-top: 44px;
+      .text {
+        padding: 20px 30px 0;
+        margin: 0 auto;
+      }
+    }
   }
   &.dk-games {
     .card {
@@ -80,10 +87,22 @@ body {
         top: 123px;
       }
       .text {
+        position: absolute;
         text-transform: uppercase;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 100;
         margin-top: 69px;
+        margin: 0 auto;
+        width: 100%;
+        top: 162px;
+        &.medium {
+          font-size: 14px;
+          top: 161px;
+        }
+        &.small {
+          font-size: 12px;
+          top: 164px;
+        }
       }
       h2 {
         position: absolute;
@@ -100,7 +119,7 @@ body {
       .text {
         font-size: 25px;
         font-weight: 100;
-        padding: 0 70px;
+        padding: 0 30px;
         line-height: 1.3em;
         margin-top: 15px;
       }
@@ -125,6 +144,27 @@ body {
       height: 49px;
       background-image: url('images/man-woman.svg');
       background-size: cover;
+    }
+    .woman {
+      width: 45%;
+      padding-right: 5%;
+      float: left;
+      text-align: right;
+      .number {
+        padding-right: 4px;
+      }
+    }
+    .man {
+      width: 45%;
+      padding-left: 5%;
+      float: left;
+      text-align: left;
+    }
+    .woman, .man {
+      margin-top: 20px;
+      .number {
+        font-size: 40px;
+      }
     }
     .building {
       margin: -9px auto 14px;
@@ -193,3 +233,114 @@ body {
   height: 40px;
   background: red;
 }
+
+
+// DONUT PIE CHART
+// * {
+//   -webkit-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
+
+// body {
+//   font-family: sans-serif;
+//   background: #e1e1e1;
+// }
+
+// .card {
+//   float: left;
+//   background: transparent;
+//   padding: 20px;
+//   margin: 0 20px 0 0;
+// }
+
+
+// Donut Chart Mixin
+.donut-chart {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+
+  .slice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chart-center {
+    position: absolute;
+    border-radius: 50%;
+  
+    span {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+@mixin donut-chart($name, $perc, $size, $width, $base, $center, $color, $textColor: $color, $textSize: 40px) {
+  
+  $color2: $color;
+  $base2: $base;
+  $deg: ($perc/100*360)+deg;
+  $deg1: 90deg;
+  $deg2: $deg;
+  
+  // If percentage is less than 50%
+  @if $perc < 50 {
+    $base: $color;
+    $color: $base2;
+    $color2: $base2;
+    $deg1: ($perc/100*360+90)+deg;
+    $deg2: 0deg;
+  }
+    
+  .donut-chart {
+    margin: -32px auto 0;
+    &#{$name} {
+      width: $size;
+      height: $size;
+      background: $base;
+      
+      .slice {
+        &.one {
+          clip: rect(0 $size $size/2 0);
+          -webkit-transform: rotate($deg1);
+          transform: rotate($deg1);
+          background: $color;
+        }
+        
+        &.two {
+          transition: transform 1s ease-out;
+          clip: rect(0 $size/2 $size 0);
+          -webkit-transform: rotate($deg2);
+          transform: rotate($deg2);
+          background: $color2;
+        }
+      }
+      
+      .chart-center {
+        top: $width;
+        left: $width;
+        width: $size - ($width * 2);
+        height: $size - ($width * 2);
+        background: $center;
+        
+        span {
+          font-size: $textSize;
+          line-height: $size - ($width * 2);
+          color: $textColor;
+        
+          &:after {
+          // content: '#{$perc}%';
+          }
+        }
+      }
+    }
+  }
+} // mixin
+
+@include donut-chart('.chart1', .5, 204px, 27px, #3c517b, #14153e, #48b2c1);
+
+
