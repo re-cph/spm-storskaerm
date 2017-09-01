@@ -1,17 +1,19 @@
 body {
+  cursor: none;
   font-family: 'Roboto', sans-serif;
   background-color: gray;
   position: relative;
   width: 1920px;
   height: 1080px;
-  .mockup {
+  &.mockup {
+    cursor: inherit;
     background: url('images/mockup.png');
     background-size: contain;
     background-repeat: no-repeat;
+    .header-video {
+      display: none;
+    }
   }
-}
-.vimeo {
-  position: absolute;
 }
 .left-column {
   background-image: url('images/storskaerm-left.png');

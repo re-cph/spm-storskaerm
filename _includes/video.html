@@ -1,4 +1,4 @@
-<section class="header-video center">
+<section class="header-video">
 
   <style>
     .embed-container iframe,
@@ -25,12 +25,7 @@
     <script>
       var iframe = document.querySelector('iframe');
       var player = new Vimeo.Player(iframe);
-      var resizeVideo = function() {
-        iframe.width($('body').width);
-        iframe.height($('body').height);
-      }
       player.setVolume(0);
-      player.on('play', function() { resizeVideo(); });
     </script>
   </div>
 
