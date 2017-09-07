@@ -16,20 +16,48 @@ body {
   }
 }
 .left-column {
-  background-image: url('images/storskaerm-left.png');
+  // background-image: url('images/storskaerm-left.png');
   position: absolute;
   left: 0;
   background-color: rgba(20,21,62,0.9);
   width: 440px;
   height: 1080px;
   color: white;
+  .spm-logo {
+    background-image: url('images/spm-logo.png');
+    width: 174px;
+    height: 174px;
+    margin: 100px auto 0;
+  }
+  .clock {
+    position: absolute;
+    text-align: center;
+    margin-top: 160px;
+    width: 100%;
+    font-size: 30px;
+    font-weight: 100;
+    .day {
+      text-transform: uppercase;
+    }
+    .date-time {
+      line-height: 1em;
+      font-size: 100px;
+      font-weight: 700;
+    }
+  }
+  .rofus-logo {
+    background-image: url('images/rofus-logo.png');
+    width: 250px;
+    height: 114px;
+    margin: 648px auto 0;
+  }
 }
 
 .inner-screen {
   position: absolute;
   top: 0;
   right: 0;
-  width: 1480px;
+  width: 1460px;
   height: 930px;
   color: white;
 
