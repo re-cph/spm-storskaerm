@@ -35,10 +35,13 @@ $(document).ready(function() {
 
   }
 
-crossDomainAjax('https://spillemyndigheden.dk/json/rofus', function (data) {
+setInterval(function() {
+  console.log('huh');
+  crossDomainAjax('https://spillemyndigheden.dk/json/rofus', function (data) {
     // success logic
     JSON2HTML(data['nodes']);
-});
+  });
+}, 10 * 1000);
 
 function crossDomainAjax (url, successCallback) {
 

@@ -75,10 +75,33 @@
 
       }
 
-    crossDomainAjax('https://spillemyndigheden.dk/json/storskaerm', function (data) {
-        // success logic
-        JSON2HTML(data['storskaerm']);
-    });
+      newsFeedAnimation();
+
+      setInterval(newsFeedAnimation, 10 * 60 * 1000);
+
+      var lastInterval;
+      function newsFeedAnimation() {
+        clearInterval(lastInterval);
+        crossDomainAjax('https://spillemyndigheden.dk/json/storskaerm', function (data) {
+          // success logic
+          JSON2HTML(data['storskaerm']);
+
+          var newsItem = $('#news div.news-item');
+          $(newsItem[0]).addClass('active');
+
+          lastInterval = setInterval(function() {
+            $('#news div.news-item.active')
+              .removeClass('active')
+                .next()
+                .addClass('active');
+
+            if(!$('#news .news-item.active').length > 0) {
+              $(newsItem[0]).addClass('active');
+            }
+          }, 10127);
+
+        });
+      }
 
     function crossDomainAjax (url, successCallback) {
 
@@ -183,24 +206,6 @@
       },5983);
     })();
 
-    // Animate newsfeed
-    (function() {
-      setTimeout(function() {
-        var newsItem = $('#news div.news-item');
-        $(newsItem[0]).addClass('active');
-        setInterval(function() {
-          $('#news div.news-item.active')
-            .removeClass('active')
-              .next()
-              .addClass('active');
-
-          if(!$('#news .news-item.active').length > 0) {
-            $(newsItem[0]).addClass('active');
-          }
-        }, 10127);
-      }, 3000);
-
-    })();
   </script>
   <!-- End of custom headers -->
 </head>
