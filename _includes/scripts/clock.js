@@ -26,9 +26,7 @@ function display_ct() {
     number < 10 ? string = '0' + number : string = '' + number;
     return string;
   }
-
 }
-
 
 });
 
