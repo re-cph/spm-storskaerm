@@ -16,10 +16,10 @@ function display_ct() {
   var month = nameOfMonth[d.getMonth()];
   var day = nameOfDay[parseInt(d.getDay())];
 
-  $('.day').text(day);
+  $('.day').text(day + ' d. ');
   // $('.date-time').text(hours + '.' + minutes + '.' + seconds);
-  $('.date-time').text(hours + '.' + minutes);
   $('.date-month').text(date + '. ' + month);
+  $('.date-time').text(hours + '.' + minutes);
 
   function prependZero(number) {
     var string = '';
