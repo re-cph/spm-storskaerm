@@ -1,0 +1,73 @@
+<div class="hexagon employees">
+
+  <div class="card">
+    <div class="number">79</div>
+    <h2>Ansatte</h2>
+    <div class="man-woman"></div>
+    <div class="woman">
+      <div class="number">43</div>
+      Kvinder
+    </div>
+    <div class="man">
+      <div class="number">36</div>
+      Mænd
+    </div>
+  </div>
+
+  <div class="card second">
+    <h2>Spillemyndigheden</h2>
+    <div class="text">Spillemyndigheden sikrer et fair spilmarked i Danmark til gavn for spillerne.</div>
+  </div>
+
+  <div class="card second with-icon">
+    <div class="icon telescope"></div>
+    <h2>FREMSYNETHED</h2>
+    <div class="text">Vi er på forkant med udviklingen og tør gå nye veje.</div>
+  </div>
+
+  <div class="card second with-icon">
+    <div class="icon weight"></div>
+    <h2>FAIRNESS</h2>
+    <div class="text">Spillemyndigheden tager ansvar for et velreguleret og fair spillemarked.</div>
+  </div>
+
+  <div class="card second with-icon">
+    <div class="icon lightbulb"></div>
+    <h2>KOMPETENT</h2>
+    <div class="text">Vi har en professionel tilgang til vores arbejde og er eksperter på vores område.</div>
+  </div>
+
+  <div class="card second with-icon">
+    <div class="icon balloon"></div>
+    <h2>HØJT TIL LOFTET</h2>
+    <div class="text">Vi har plads til forskellighed og er åbne for nye ideer.</div>
+  </div>
+
+</div>
+
+<div class="hexagon dk-games">
+  {% for hexa2 in site.data.hexagon2 %}
+  <div class="card" data-percent="{{ hexa2.percent}}">
+    <div class="donut-chart chart1">
+      <div class="slice one"></div>
+      <div class="slice two"></div>
+      <div class="chart-center">
+        <span></span>
+      </div>
+    </div>
+    <div class="percent">{{ hexa2.percent}}%</div>
+    <div class="text">{{ hexa2.text }}</div>
+    <h2>Danskernes spil</h2>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="hexagon casinos">
+  {% for hexa3 in site.data.hexagon3 %}
+  <div class="card">
+    <div class="building"></div>
+    <h2>Virksomheder</h2>
+    <div class="text">{{ hexa3.text }}</div>
+  </div>
+  {% endfor %}
+</div>
