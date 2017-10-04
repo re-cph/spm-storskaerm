@@ -1,24 +1,26 @@
 $(document).ready(function() {
 
-  var JSON2HTML = function(storskaerm) {
+  var JSON2HTML = function(obj) {
 
     // var monthNames = ['januar','februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'];
 
     var news = '<div class="crown fr"></div>\n';
 
-    for (i = 0; i < storskaerm.length; i++) {
-      var item = storskaerm[i]['node'];
+    for (i = 0; i < obj.length; i++) {
+      var item = obj[i]['node'];
+
       var pubDate     = item['date'];
       var title       = item['title'];
       var description = item['text'];
       var link        = item['link'];
-      var nid        = item['nid'];
+      var nid         = item['nid'];
+
       var floatDirection = 'fl cl';
 
-      if (i % 2 === 1){ floatDirection = 'fr'; }
+      if (i % 2 === 1) { floatDirection = 'fr'; }
 
       news += '<div class="news-item faq-item node_'+nid+' '+floatDirection+'">\n';
-      news += '  <div class="pub-date">'+pubDate+'</div>';
+      news += '  <div class="pub-date">'+pubDate+'</div>\n';
       news += '  <h3>'+title+'</h3>\n';
       news += '  <p>'+description+'</p>\n';
       news += '</div>\n\n';
@@ -30,11 +32,54 @@ $(document).ready(function() {
 
   }
 
-  newsFeedAnimation();
+  var JSON2HTML_WELCOME = function(obj) {
+    var welcome = '';
+    var showWelcome = false;
 
-  setInterval(newsFeedAnimation, 10 * 60 * 1000);
+    for (i = 0; i < obj.length; i++) {
+      var item = obj[i]['employee'];
+
+      var nid         = item['nid'];
+      var image       = item['image']['src'];
+      var name        = item['name'];
+      var department  = item['department'];
+      var start       = item['from'];
+      var end         = item['to'];
+
+      var today = new Date();
+      today.setHours(0,0,0,0); // Set time today to midnight.
+
+      start = new Date(start);
+      end = new Date(end);
+
+      if (item['from'] === item['to']) {
+        // End date hasn't been set, so set end date to three weeks after start.
+        end.setDate(end.getDate() + 27);
+      }
+
+      if (today <= end) {
+        showWelcome = true;
+        welcome += '<div class="card node_' + nid + '">\n';
+        welcome += '  <div class="image" style="background-image: url(' + image + ');"></div>\n';
+        welcome += '  <h2>Velkommen</h2>\n';
+        welcome += '  <div class="text">' + name + '</div>\n';
+        welcome += '  <div class="line"> &mdash; </div>\n';
+        welcome += '  <div class="text">' + department + '</div>\n';
+        welcome += '</div>\n';
+      }
+    }
+
+    if (showWelcome === true) {
+      $('#welcome').show();
+      $('body').addClass('welcome-active');
+      $('#welcome').append($(welcome)).removeClass('hidden');
+    }
+  }
 
   var lastInterval;
+  newsFeedAnimation();
+  setInterval(newsFeedAnimation, 10 * 60 * 1000);
+
   function newsFeedAnimation() {
     clearInterval(lastInterval);
     crossDomainAjax('https://spillemyndigheden.dk/json/storskaerm', function (data) {
@@ -58,7 +103,21 @@ $(document).ready(function() {
     });
   }
 
-function crossDomainAjax (url, successCallback) {
+  var lastEmployeeInterval;
+  employeeAnimation();
+
+  function employeeAnimation() {
+      crossDomainAjax('https://spillemyndigheden.dk/json/storskaerm/medarbejder', function (data) {
+      // success logic
+      JSON2HTML_WELCOME(data['welcome']);
+
+      var newsItem = $('#welcome div.card');
+      $(newsItem[0]).addClass('active');
+
+    });
+  }
+
+  function crossDomainAjax (url, successCallback) {
 
     // IE8 & 9 only Cross domain JSON GET request
     if ('XDomainRequest' in window && window.XDomainRequest !== null) {
