@@ -16,6 +16,11 @@ function display_ct() {
   var month = nameOfMonth[d.getMonth()];
   var day = nameOfDay[parseInt(d.getDay())];
 
+  // reload page every hour
+  if (parseInt(minutes) === 59 && parseInt(seconds) === 59) {
+    document.location = "/";
+  }
+
   $('.day').text(day + ' d. ');
   // $('.date-time').text(hours + '.' + minutes + '.' + seconds);
   $('.date-month').text(date + '. ' + month);
