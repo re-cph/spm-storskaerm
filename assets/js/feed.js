@@ -7,7 +7,7 @@ $(document).ready(function() {
     var news = '<div class="crown fr"></div>\n';
 
     for (i = 0; i < obj.length; i++) {
-      var item = obj[i]['node'];
+      var item = obj[i];
 
       var pubDate     = item['date'];
       var title       = item['title'];
@@ -28,7 +28,9 @@ $(document).ready(function() {
 
     $('#news-bg').show();
     $('#news.faq').html(news);
-    $('#news.faq .news-item a').attr('href', 'https://spillemyndigheden.dk'+$('#news.faq .news-item a').attr('href')) 
+    $('#news.faq .news-item a').each(function(index) {
+      $(this).attr('href', $(this).attr('href')).attr('target', '_blank');
+    });
 
   }
 
@@ -37,27 +39,29 @@ $(document).ready(function() {
     var showWelcome = false;
 
     for (i = 0; i < obj.length; i++) {
-      var item = obj[i]['employee'];
+      var item = obj[i];
 
       var nid         = item['nid'];
-      var image       = item['image']['src'];
+      var image       = 'https://www.spillemyndigheden.dk' + item['image'];
       var name        = item['name'];
       var department  = item['department'];
-      var start       = item['from'];
-      var end         = item['to'];
-
+      //var start       = item['from'];
+      //var end         = item['to'];
+      var all_date    = item['date'];
       var today = new Date();
       today.setHours(0,0,0,0); // Set time today to midnight.
 
-      start = new Date(start);
-      end = new Date(end);
+      var splitted = all_date.split(' - ');
+      start = new Date(splitted[0]);
+      end = new Date(splitted[1]);
 
-      if (item['from'] === item['to']) {
+      if (splitted[0] ===splitted[1]) {
         // End date hasn't been set, so set end date to three weeks after start.
         end.setDate(end.getDate() + 27);
       }
 
       if (today <= end) {
+
         showWelcome = true;
         welcome += '<div class="card node_' + nid + '">\n';
         welcome += '  <div class="image" style="background-image: url(' + image + ');"></div>\n';
@@ -82,9 +86,9 @@ $(document).ready(function() {
 
   function newsFeedAnimation() {
     clearInterval(lastInterval);
-    crossDomainAjax('https://spillemyndigheden.dk/json/storskaerm', function (data) {
+    crossDomainAjax('https://www.spillemyndigheden.dk/json/storskaerm?_format=json', function (data) {
       // success logic
-      JSON2HTML(data['storskaerm']);
+      JSON2HTML(data);
 
       var newsItem = $('#news div.news-item');
       $(newsItem[0]).addClass('active');
@@ -107,9 +111,9 @@ $(document).ready(function() {
   employeeAnimation();
 
   function employeeAnimation() {
-      crossDomainAjax('https://spillemyndigheden.dk/json/storskaerm/medarbejder', function (data) {
+      crossDomainAjax('https://www.spillemyndigheden.dk/json/storskaerm/medarbejder?_format=json', function (data) {
       // success logic
-      JSON2HTML_WELCOME(data['welcome']);
+      JSON2HTML_WELCOME(data);
 
       var newsItem = $('#welcome div.card');
       $(newsItem[0]).addClass('active');
