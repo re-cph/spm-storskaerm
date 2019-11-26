@@ -3,6 +3,7 @@ $(document).ready(function() {
   var JSON2HTML = function(obj) {
 
     // var monthNames = ['januar','februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'];
+    $('.bottom-row').hide(); //Hide if no news are available
 
     var news = '<div class="crown fr"></div>\n';
 
@@ -24,6 +25,8 @@ $(document).ready(function() {
       news += '  <h3>'+title+'</h3>\n';
       news += '  <p>'+description+'</p>\n';
       news += '</div>\n\n';
+
+      $('.bottom-row').show(); //Show if news are available
     }
 
     $('#news-bg').show();
